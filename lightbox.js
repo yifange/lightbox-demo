@@ -52,14 +52,24 @@
     setImage();
   };
 
+  var bindEvent = function (element, eventName, eventHandler) {
+    if (element.addEventListener) {
+      element.addEventListener(eventName, eventHandler, false);
+    } else if (element.attachEvent) {
+      element.attachEvent('on' + eventName, eventHandler);
+    } else {
+      console.error('cannot bind event');
+    }
+  };
+
   exports.bindEvents = function () {
-    window.document.getElementById('lightbox-toggler').
-        addEventListener('click', toggleBox);
-    window.document.getElementById('lightbox-close-button').
-        addEventListener('click', closeBox);
-    window.document.getElementById('lightbox-left-button').
-        addEventListener('click', moveLeft);
-    window.document.getElementById('lightbox-right-button').
-        addEventListener('click', moveRight);
+    bindEvent(window.document.getElementById('lightbox-toggler'),
+        'click', toggleBox);
+    bindEvent(window.document.getElementById('lightbox-close-button'),
+        'click', closeBox);
+    bindEvent(window.document.getElementById('lightbox-left-button'),
+        'click', moveLeft);
+    bindEvent(window.document.getElementById('lightbox-right-button'),
+        'click', moveRight);
   };
 })(window.lightbox = window.lightbox || {});
