@@ -1,0 +1,18 @@
+#lightbox {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+}
+
+#lightbox-image-container {
+  background-repeat: no-repeat;
+}
+
+#lightbox-left-button,
+#lightbox-right-button {
+  position: absolute;
+}
+
+#lightbox-right-button {
+  right: 0;
+}
