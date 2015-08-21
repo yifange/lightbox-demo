@@ -18,6 +18,10 @@
 
   var auth = function () {
     var redirectTo = window.location.href;
+    var hashIdx = redirectTo.indexOf('#');
+    if (hashIdx > 0) {
+      redirectTo = redirectTo.slice(0, hashIdx);
+    }
     if (redirectTo[redirectTo.length - 1] === '/') {
       redirectTo = redirectTo.slice(0, redirectTo.length - 1);
     }
@@ -46,6 +50,11 @@
     retrieveAccessToken();
     var req = new XMLHttpRequest();
     jsonp('https://api.instagram.com/v1/media/popular?access_token=' + accessToken, function (response) {
+      console.log(response);
+      if (response.meta.code === 400) {
+        // invalid access token
+        auth();
+      }
       images = response.data;
       window.lightbox.setImages(images);
     });
