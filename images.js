@@ -24,7 +24,7 @@
     }
     console.log( 'https://instagram.com/oauth/authorize/?client_id=' + clientId +
         '&redirect_uri=' + redirectTo + '&response_type=token');
-    window.location.href =
+    window.location =
         'https://instagram.com/oauth/authorize/?client_id=' + clientId +
         '&redirect_uri=' + redirectTo + '&response_type=token';
   };
