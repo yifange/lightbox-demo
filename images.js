@@ -11,7 +11,6 @@
     }
     if (window.location.hash) {
       accessToken = window.location.hash.substring(14);
-      window.location.hash = '';
     } else {
       auth();
     }
