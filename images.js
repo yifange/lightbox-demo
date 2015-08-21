@@ -33,7 +33,12 @@
   var jsonp = function (url, callback) {
     var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
     window[callbackName] = function(data) {
-      delete window[callbackName];
+      window[callbackname] = undefined;
+      try {
+        delete window[callbackName];
+      } catch (e) {
+        console.warn('cannot delete property from window');
+      }
       document.body.removeChild(script);
       callback(data);
     };
@@ -49,7 +54,6 @@
       images = response.data;
       window.lightbox.setImages(images);
     });
-    console.log(req.response);
   };
 
   exports.listImages = function () {
