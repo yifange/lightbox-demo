@@ -6,7 +6,6 @@
   var isOpen = false;
 
   exports.setImages = function (resources) {
-    console.log(resources);
     images = resources;
     window.document.getElementById('lightbox-toggler').disabled = false;
   };
@@ -14,13 +13,14 @@
   var setImage = function () {
     var imageContainer = window.document.getElementById('lightbox-image-container');
     var lightbox = window.document.getElementById('lightbox');
+    var lightboxTitle = window.document.getElementById('lightbox-image-title');
     var currentImage = images[currentIdx].images['standard_resolution'];
-    console.log('set image', currentImage);
     imageContainer.style['background-image'] = 'url("' + currentImage.url + '")';
     imageContainer.style.height = currentImage.height + 'px';
     imageContainer.style.width = currentImage.width + 'px';
     lightbox.style.height = currentImage.height + 'px';
     lightbox.style.width = currentImage.width + 'px';
+    lightboxTitle.textContent = images[currentIdx].caption.text;
   };
 
   var openBox = function () {

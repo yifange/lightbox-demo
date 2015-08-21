@@ -11,7 +11,6 @@
     }
     if (window.location.hash) {
       accessToken = window.location.hash.substring(14);
-      console.log('access token:', accessToken);
     } else {
       auth();
     }
@@ -22,8 +21,6 @@
     if (redirectTo[redirectTo.length - 1] === '/') {
       redirectTo = redirectTo.slice(0, redirectTo.length - 1);
     }
-    console.log( 'https://instagram.com/oauth/authorize/?client_id=' + clientId +
-        '&redirect_uri=' + redirectTo + '&response_type=token');
     window.location =
         'https://instagram.com/oauth/authorize/?client_id=' + clientId +
         '&redirect_uri=' + redirectTo + '&response_type=token';
@@ -36,9 +33,7 @@
       window[callbackName] = undefined;
       try {
         delete window[callbackName];
-      } catch (e) {
-        console.warn('cannot delete property from window');
-      }
+      } catch (e) {}
       document.body.removeChild(script);
       callback(data);
     };

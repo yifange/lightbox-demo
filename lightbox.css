@@ -11,6 +11,13 @@
 #lightbox-left-button,
 #lightbox-right-button {
   position: absolute;
+  width: 2em;
+  height: 2em;
+}
+
+#lightbox-close-button {
+  width: 2em;
+  height: 2em;
 }
 
 #lightbox-right-button {
