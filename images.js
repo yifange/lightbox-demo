@@ -50,7 +50,6 @@
     retrieveAccessToken();
     var req = new XMLHttpRequest();
     jsonp('https://api.instagram.com/v1/media/popular?access_token=' + accessToken, function (response) {
-      console.log(response);
       if (response.meta.code === 400) {
         // invalid access token
         auth();
